@@ -11,19 +11,19 @@
     <link rel="canonical" href="https://<your-domain>/" />
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="stylesheet.css" />
-    <!-- 提前加载首屏大图，提升 LCP -->
-    <link rel="preload" as="image" href="images/profile.jpg" />
+    <!-- 首屏头像预加载：与实际使用的图片保持一致 -->
+    <link rel="preload" as="image" href="images/yang.png" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content="Yang Zhou" />
     <meta property="og:description" content="PhD student @ U of Toronto (TRAILab), supervised by Prof. Steven Waslander. Research: autonomous driving, generative world models, motion prediction." />
-    <meta property="og:image" content="images/profile.jpg" />
+    <meta property="og:image" content="images/yang.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://<your-domain>/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Yang Zhou" />
     <meta name="twitter:description" content="PhD student @ U of Toronto (TRAILab). Autonomous driving & generative world models." />
-    <meta name="twitter:image" content="images/profile.jpg" />
+    <meta name="twitter:image" content="images/yang.png" />
 
     <!-- Structured data -->
     <script type="application/ld+json">
@@ -31,11 +31,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Yang Zhou",
-      "affiliation": {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Toronto"
-      },
-      "alumniOf": {"@type": "CollegeOrUniversity", "name": "Hunan University"},
+      "affiliation": {"@type":"CollegeOrUniversity","name":"University of Toronto"},
+      "alumniOf": {"@type":"CollegeOrUniversity","name":"Hunan University"},
       "jobTitle": "PhD Student",
       "url": "https://<your-domain>/",
       "sameAs": [
@@ -45,6 +42,32 @@
       ]
     }
     </script>
+
+    <!-- 轻量内联样式：主要做布局与移动端适配 -->
+    <style>
+      /* 顶部两列 */
+      table.hero { width:100%; border:0; border-spacing:0; border-collapse:separate; margin:0 auto; }
+      .hero .col-text  { padding:2.5%; width:64%; vertical-align:middle; }
+      .hero .col-photo { padding:2.5%; width:36%; max-width:36%; vertical-align:middle; }
+
+      /* 论文列表 */
+      table.pubs { width:100%; border:0; border-spacing:0 12px; border-collapse:separate; margin:0 auto; }
+      .pubs td.thumb { width:28%; padding:12px; vertical-align:middle; }
+      .pubs td.meta  { width:72%; padding:12px 8px; vertical-align:middle; }
+
+      /* 小屏自适应：两列堆叠、头像居中 */
+      @media (max-width: 720px) {
+        .hero, .hero tr, .hero td { display:block; width:100% !important; }
+        .hero .col-photo { max-width:100%; padding-top:0; }
+        .hero img { max-width:220px; margin:8px auto 0; display:block; }
+        .pubs td.thumb, .pubs td.meta { display:block; width:100%; }
+        .pubs td.thumb { padding-bottom:0; }
+      }
+
+      /* 细节：标题字号略大些（若你的 stylesheet.css 已定义 .name，可删除） */
+      .name { font-size: 28px; font-weight: 700; margin: 0.2em 0 0.6em; }
+      .papertitle { font-weight: 600; }
+    </style>
   </head>
 
   <body>
@@ -54,10 +77,10 @@
         <tr>
           <td style="padding:0;">
             <!-- 顶部两栏：简介 + 头像 -->
-            <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0 auto;">
+            <table class="hero">
               <tbody>
                 <tr>
-                  <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <td class="col-text">
                     <p class="name" style="text-align:center;">Yang Zhou</p>
                     <p>
                       Hi, I'm a PhD student at the University of Toronto, supervised by
@@ -67,14 +90,11 @@
                       <a href="http://www-en.hnu.edu.cn/">Hunan University</a>, working with
                       <a href="https://scholar.google.com/citations?user=ztdMYPcAAAAJ">Prof. Jianxin Lin</a>.
                     </p>
-                    <p>
-                      My name is pronounced “young” and written as 洋 (“ocean”) in Chinese.
-                    </p>
-                    <p>
-                      I’m broadly interested in autonomous driving, generative world models, trajectory prediction,
-                      and evaluation benchmarks that bridge vision and robotics. Always open to chat or collaborate—feel free to reach out!
-                    </p>
+                    <p>My name is pronounced “young” and written as 洋 (“ocean”) in Chinese.</p>
+                    <p>I’m broadly interested in autonomous driving and generative world models. Always open to chat or collaborate—feel free to reach out!</p>
                     <p style="text-align:center">
+                      <a href="mailto:kmzy99@gmail.com">Email</a>
+                      &nbsp;/&nbsp;
                       <a href="https://scholar.google.com/citations?user=cA9lRBcAAAAJ">Google&nbsp;Scholar</a>
                       &nbsp;/&nbsp;
                       <a href="https://x.com/YangZhou99">Twitter</a>
@@ -82,13 +102,12 @@
                       <a href="https://github.com/youngzhou1999">GitHub</a>
                     </p>
                   </td>
-                  <td style="padding:2.5%;width:37%;max-width:37%">
-                    <a href="images/profile.jpg">
+                  <td class="col-photo">
+                    <a href="images/yang.png">
                       <img
-                        src="images/profile.jpg"
+                        src="images/yang.png"
                         alt="Yang Zhou profile photo"
-                        style="width:100%;max-width:100%;object-fit:cover;border-radius:50%;"
-                        class="hoverZoomLink"
+                        style="width:100%;max-width:100%;object-fit:cover;border-radius:0%;"
                         decoding="async"
                         fetchpriority="high"
                       />
@@ -107,52 +126,82 @@
                     <p>
                       I work at the intersection of computer vision and robotics, with a focus on
                       <em>driving world models</em>, video/trajectory generation, and motion planning.
-                      Some items below are <span class="highlight">highlighted</span>.
+                      <br/>
+                      <small>*: equal contribution; &nbsp;†: equal supervisor.</small>
                     </p>
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <!-- 你自己的论文/项目列表放这里（建议只保留自己的作品，删除模板示例） -->
-            <!-- <table>...your items...</table> -->
+            <!-- 论文/项目列表 -->
+            <table class="pubs">
+              <tbody>
+                <!-- SmartRefine -->
+                <tr>
+                  <td class="thumb">
+                    <img
+                      src="images/smartpretrain.png"
+                      alt="SmartRefine teaser"
+                      width="320"
+                      loading="lazy"
+                      decoding="async"
+                      style="max-width:100%;height:auto;border-radius:12px;"
+                    />
+                  </td>
+                  <td class="meta">
+                    <a href="https://arxiv.org/abs/2410.08669">
+                      <span class="papertitle">SmartPretrain: Model-Agnostic and Dataset-Agnostic Representation Learning for Motion Prediction</span>
+                    </a>
+                    <br />
+                    <strong>Yang Zhou*</strong>, Hao Shao*, Letian Wang, Steven L. Waslander, Hongsheng Li, Yu Liu
+                    <br />
+                    <em>ICLR</em>, 2025
+                    &nbsp; &nbsp;
+                    <a href="https://arxiv.org/abs/2410.08669">[Paper]</a>
+                    <a href="https://github.com/youngzhou1999/SmartPretrain">[Code]</a>
+                    <p style="margin-top:8px;">
+                      We propose SmartPretrain, a general and scalable self-supervised learning framework for motion prediction, designed to be both model-agnostic and dataset-agnostic.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-            <tr onmouseout="smartref_stop()" onmouseover="smartref_start()" bgcolor="#ffffd0">
-              <td style="padding:16px;width:20%;vertical-align:middle">
-                <div class="one">
-                  <div class="two" id="smartref_image">
-                    <img src="images/smartrefine_fig_after.jpg" width="100%" alt="SmartRefine illustration">
-                  </div>
-                  <img src="images/smartrefine_fig.jpg" width="160" alt="SmartRefine teaser">
-                </div>
-                <script type="text/javascript">
-                  function smartref_start(){document.getElementById('smartref_image').style.opacity="1";}
-                  function smartref_stop(){document.getElementById('smartref_image').style.opacity="0";}
-                  smartref_stop();
-                </script>
-              </td>
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2403.11492">
-                  <span class="papertitle">SmartRefine: A Scenario-Adaptive Refinement Framework for Efficient Motion Prediction</span>
-                </a>
-                <br>
-                <strong>Yang Zhou</strong>, Hao Shao, Letian Wang, Steven L. Waslander, Hongsheng Li, Yu Liu
-                <br>
-                <em>CVPR</em>, 2024
-                <br>
-                <a href="https://arxiv.org/abs/2403.11492">arXiv</a> /
-                <a href="https://github.com/opendilab/SmartRefine">code</a>
-                <p></p>
-                <p>
-                  提出场景自适应的多轮 refinement 策略，以极低额外计算开销提升多种主干模型在 Argoverse 1/2 上的预测精度；
-                  投稿时在 AV2 单车道榜单中达到非集成方法最优。:contentReference[oaicite:0]{index=0}
-                </p>
-              </td>
-            </tr>
-            
-             
+            <table class="pubs">
+              <tbody>
+                <!-- SmartRefine -->
+                <tr>
+                  <td class="thumb">
+                    <img
+                      src="images/smartrefine.png"
+                      alt="SmartRefine teaser"
+                      width="320"
+                      loading="lazy"
+                      decoding="async"
+                      style="max-width:100%;height:auto;border-radius:12px;"
+                    />
+                  </td>
+                  <td class="meta">
+                    <a href="https://arxiv.org/abs/2403.11492">
+                      <span class="papertitle">SmartRefine: A Scenario-Adaptive Refinement Framework for Efficient Motion Prediction</span>
+                    </a>
+                    <br />
+                    <strong>Yang Zhou*</strong>, Hao Shao*, Letian Wang, Steven L. Waslander, Hongsheng Li, Yu Liu
+                    <br />
+                    <em>CVPR</em>, 2024
+                    &nbsp; &nbsp;
+                    <a href="https://arxiv.org/abs/2403.11492">[Paper]</a>
+                    <a href="https://github.com/opendilab/SmartRefine">[Code]</a>
+                    <p style="margin-top:8px;">
+                      We introduce a scenario-adaptive multi-round refinement strategy that boosts trajectory prediction with minimal extra compute.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-            <!-- 页脚致谢（可留可去） -->
+            <!-- 页脚 -->
             <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0 auto;">
               <tbody>
                 <tr>
