@@ -6,7 +6,7 @@
 
     <!-- Basic -->
     <meta name="author" content="Yang Zhou" />
-    <meta name="description" content="Yang Zhou — PhD student at the University of Toronto (TRAILab). Research: autonomous driving, generative world models, motion prediction, evaluation benchmarks." />
+    <meta name="description" content="Yang Zhou — PhD student at the University of Toronto (TRAILab). Research: multimodal learning, generative models, world models, video generation, motion planning." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://<your-domain>/" />
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
@@ -16,13 +16,13 @@
 
     <!-- Open Graph / Twitter -->
     <meta property="og:title" content="Yang Zhou" />
-    <meta property="og:description" content="PhD student @ U of Toronto (TRAILab), supervised by Prof. Steven Waslander. Research: autonomous driving, generative world models, motion prediction." />
+    <meta property="og:description" content="PhD student @ U of Toronto (TRAILab), supervised by Prof. Steven Waslander. Research: multimodal learning, generative models, world models." />
     <meta property="og:image" content="images/yang.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://<your-domain>/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Yang Zhou" />
-    <meta name="twitter:description" content="PhD student @ U of Toronto (TRAILab). Autonomous driving & generative world models." />
+    <meta name="twitter:description" content="PhD student @ U of Toronto (TRAILab). Multimodal learning & generative models." />
     <meta name="twitter:image" content="images/yang.png" />
 
     <!-- Structured data -->
@@ -90,8 +90,7 @@
                       Hunan University, working with
                       <a href="https://scholar.google.com/citations?user=ztdMYPcAAAAJ">Prof. Jianxin Lin</a>.
                     </p>
-                    <!-- <p>My name is pronounced “young” and written as 洋 (“ocean”) in Chinese.</p> -->
-                    <p>I’m broadly interested in autonomous driving and generative world models. Always open to chat or collaborate—feel free to reach out!</p>
+                    <p>My research lies at the intersection of multimodal learning, generative models and Autonomous Driving, with a focus on world models, video generation, and motion planning.</p>
                     <p style="text-align:center">
                       <a href="mailto:kmzy99@gmail.com">Email</a>
                       &nbsp;/&nbsp;
@@ -123,13 +122,6 @@
                 <tr>
                   <td style="padding:16px;width:100%;vertical-align:middle">
                     <h2>Research</h2>
-                    <p>
-                      I work at the intersection of computer vision and robotics, with a focus on
-                      <em>driving world models</em>, video/trajectory generation, and motion planning.
-                      <br/>
-                      <small>*: equal contribution; &nbsp;†: equal supervisor.</small>
-                    </p>
-                  </td>
                 </tr>
               </tbody>
             </table>
@@ -172,12 +164,12 @@
 
             <table class="pubs">
               <tbody>
-                <!-- SmartRefine -->
+                <!-- VividFace -->
                 <tr>
                   <td class="thumb">
                     <img
                       src="images/vividface.png"
-                      alt="SmartRefine teaser"
+                      alt="VividFace teaser"
                       width="320"
                       loading="lazy"
                       decoding="async"
@@ -185,8 +177,8 @@
                     />
                   </td>
                   <td class="meta">
-                    <a href="https://arxiv.org/abs/2410.08669">
-                      <span class="papertitle">VividFace: A Robost and High-Fidelity Video Face Swapping Framework</span>
+                    <a href="https://arxiv.org/abs/2412.09618">
+                      <span class="papertitle">VividFace: A Diffusion-Based Hybrid Framework for High-Fidelity Video Face Swapping</span>
                     </a>
                     <br />
                     Hao Shao, Shulun Wang, <strong>Yang Zhou</strong>, Guanglu Song, Dailan He, Zhuofan Zong, Shuo Qin, Yu Liu, Hongsheng Li 
@@ -197,7 +189,7 @@
                     <a href="https://arxiv.org/abs/2412.09618">[Paper]</a>
                     <a href="https://github.com/deepcs233/VividFace">[Code]</a>
                     <p style="margin-top:8px;">
-                      We propose a diffusion-based framework for video face swapping, featuring hybrid training, an AIDT dataset, and 3D reconstruction for superior identity preservation and temporal consistency.
+                      A diffusion-based framework for video face swapping with superior identity preservation and temporal consistency.
                     </p>
                   </td>
                 </tr>
@@ -206,12 +198,12 @@
 
             <table class="pubs">
               <tbody>
-                <!-- SmartRefine -->
+                <!-- SmartPretrain -->
                 <tr>
                   <td class="thumb">
                     <img
                       src="images/smartpretrain.png"
-                      alt="SmartRefine teaser"
+                      alt="SmartPretrain teaser"
                       width="320"
                       loading="lazy"
                       decoding="async"
@@ -230,7 +222,7 @@
                     <a href="https://arxiv.org/abs/2410.08669">[Paper]</a>
                     <a href="https://github.com/youngzhou1999/SmartPretrain">[Code]</a>
                     <p style="margin-top:8px;">
-                      We propose SmartPretrain, a general and scalable self-supervised learning framework for motion prediction, designed to be both model-agnostic and dataset-agnostic.
+                      A general and scalable self-supervised pretraining framework for motion prediction, designed to be both model-agnostic and dataset-agnostic.
                     </p>
                   </td>
                 </tr>
@@ -263,7 +255,7 @@
                     <a href="https://arxiv.org/abs/2403.11492">[Paper]</a>
                     <a href="https://github.com/opendilab/SmartRefine">[Code]</a>
                     <p style="margin-top:8px;">
-                      We introduce a scenario-adaptive multi-round refinement strategy that boosts trajectory prediction with minimal extra compute.
+                      A scenario-adaptive multi-round refinement strategy that boosts trajectory prediction with minimal extra compute.
                     </p>
                   </td>
                 </tr>
@@ -300,7 +292,7 @@
         } catch (_) {}
       });
 
-      // 辅助功能：用户偏好“减少动态”时，禁用自动播放
+      // 辅助功能：用户偏好"减少动态"时，禁用自动播放
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
       }
